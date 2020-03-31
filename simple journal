@@ -1,0 +1,99 @@
+
+def printFunction():
+  print("choose an option")
+  print("(V or v): view past entries")
+  print("(A or a): add new entry")
+  print("(D or d): delete entry")
+  print("(S or s): save all changes")
+  print("(Q or q): Quit")
+
+
+def viewFunction(data,title):
+  i=0
+  
+  print("\n Welcome to view ")
+
+  if len(data) == 1:
+    print("you have " + str(len(data))+ " entry \n")
+  else:
+    print("you have " + str(len(data))+ " entries \n")
+
+  for x, y in zip (data ,title ):
+    i = i+1
+    print("entry # " + str(i) + " " + y)
+    print("   " + x + "\n")
+     
+  
+def addFunction(data,title):
+  body = ""
+  titles = ""
+  
+  print("\n Welcome to Add ")
+  print("enter your journal title")
+  titles = input()
+  print()
+  title.append(titles)
+  print("enter your journal body")
+  body = input()
+  print()
+  data.append(body)
+  
+  
+def deleteFunction():
+  deleteId = 0
+  deleteData = ""
+
+  print("\nWelcome to delete")
+  print("enter the ID for entry you want to delete")
+  deleteId = input()
+  deleteId = int(deleteId) -1
+  
+  if len(data) > 0 and (deleteId < len(data)):
+    data.remove(data[int(deleteId)])
+    title.remove(title[int(deleteId)])
+  else:
+    print("Invalid message ID")
+    return
+
+def saveFunction(data,title):
+  Id =0
+  print("\nWelcome to save")
+
+
+
+
+x = ""
+print("hello welcome, enter your name : ", end = '') 
+x = input()
+print()
+print("hello " + x + "!" )
+
+data = ["body1","body2","body3","body4"]
+title =["title1","title2","title3","title4"]
+print( "Welcome to your journal! \n")
+printFunction()
+userInput = ""
+userInput = input()
+
+while userInput != "Q":
+
+  if userInput== "V" or userInput == "v":
+    viewFunction(data,title)
+  elif userInput == "A" or userInput == "a":
+    addFunction(data,title)
+  elif userInput == "D" or userInput == "d":
+    deleteFunction()
+  elif userInput == "Q" or userInput == "q":
+    exit(0)
+  elif userInput == "S" or userInput == "s":
+    saveFunction(data,title)
+  else:
+    print("Invalid Input! try again")
+
+  printFunction()
+  userInput = ""
+  userInput = input()
+
+
+
+
